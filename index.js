@@ -40,7 +40,7 @@ function iniciar (){
         ="`+tudo.img+`">
        
         <p> `+tudo.nome+` </p>
-        <a key = "`+tudo.id+`" href=""> adicionar ao carrinho </a>
+        <a key = "`+tudo.id+`" href="#"> adicionar ao carrinho </a>
         </div>
     `;
    
@@ -48,4 +48,22 @@ function iniciar (){
  
 }
 iniciar ()
+
+atualizarCarrinho =()=>{
+    console.log(itens)
+};
+
+var links = document.getElementsByTagName('a');
+
+for( var i= 0; i<links.length; i++){
+    links[i].addEventListener("click",function(){
+        let key =this.getAttribute('key');
+        itens[key].quantidade++;
+        atualizarCarrinho();
+        return false;
+    })
+};
+
+
+
  
