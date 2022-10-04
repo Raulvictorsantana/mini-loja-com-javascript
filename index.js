@@ -37,8 +37,7 @@ function iniciar (){
      conteinerprodutos.innerHTML+=`
         <div class="produto-singla"> 
         <img src 
-        ="`+tudo.img+`">
-       
+        ="`+tudo.img+`"> 
         <p> `+tudo.nome+` </p>
         <a key = "`+tudo.id+`" href="#"> adicionar ao carrinho </a>
         </div>
@@ -50,8 +49,22 @@ function iniciar (){
 iniciar ()
 
 atualizarCarrinho =()=>{
-    console.log(itens)
+    let carrinho = document.getElementById('carrinho')
+    carrinho.innerHTML=""
+    itens.map ((tudo)=>{
+        if(tudo.quantidade> 0){
+
+    
+    carrinho.innerHTML+= `
+    <p> `+tudo.nome+`  QUANTIDADE:`+tudo.quantidade+` </p>
+    <hr>
+    `;
+    
+    }
+  
+    });
 };
+
 
 var links = document.getElementsByTagName('a');
 
@@ -60,7 +73,7 @@ for( var i= 0; i<links.length; i++){
         let key =this.getAttribute('key');
         itens[key].quantidade++;
         atualizarCarrinho();
-        return false;
+       
     })
 };
 
